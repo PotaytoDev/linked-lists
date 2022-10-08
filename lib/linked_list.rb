@@ -8,11 +8,12 @@ class Node
 end
 
 class LinkedList
-  attr_reader :head, :tail
+  attr_reader :head, :tail, :size
 
   def initialize
     @head = nil
     @tail = nil
+    @size = 0
   end
 
   def append(value)
@@ -26,6 +27,8 @@ class LinkedList
       @tail.next_node = new_node
       @tail = @tail.next_node
     end
+
+    @size += 1
   end
 
   def prepend(value)
@@ -39,5 +42,7 @@ class LinkedList
       new_node.next_node = @head
       @head = new_node
     end
+
+    @size += 1
   end
 end
