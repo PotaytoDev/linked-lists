@@ -85,4 +85,35 @@ class LinkedList
 
     false
   end
+
+  # Returns the index of the node containing value, or nil if not found
+  def find(value)
+    index = 0
+    current_node = @head
+
+    until current_node.nil?
+      return index if current_node.value == value
+
+      index += 1
+      current_node = current_node.next_node
+    end
+
+    nil
+  end
+
+  # Represents LinkedList objects as strings, so they can be printed out and
+  # previewed in the console with the format:
+  # ( value ) -> ( value ) -> ( value ) -> nil
+  def to_s
+    current_node = @head
+    string_output = ''
+
+    until current_node.nil?
+      string_output += "( #{current_node.value} ) -> "
+      current_node = current_node.next_node
+    end
+
+    string_output += 'nil'
+    string_output
+  end
 end
