@@ -116,4 +116,47 @@ class LinkedList
     string_output += 'nil'
     string_output
   end
+
+  # Inserts a new node with the provided value at the given index
+  def insert_at(value, index)
+    if index <= 0
+      prepend(value)
+    elsif index >= @size
+      append(value)
+    else
+      current_node = @head
+
+      (index - 1).times do
+        current_node = current_node.next_node
+      end
+
+      previous_next_node = current_node.next_node
+
+      new_node = Node.new
+      new_node.value = value
+
+      current_node.next_node = new_node
+      new_node.next_node = previous_next_node
+    end
+  end
+
+  # Removes the node at the given index
+  def remove_at(index)
+    if index <= 0
+      @head = @head.next_node
+    elsif index >= @size
+      pop
+    else
+      current_node = @head
+
+      (index - 1).times do
+        current_node = current_node.next_node
+      end
+
+      node_to_delete = current_node.next_node
+      new_next_node = node_to_delete.next_node
+
+      current_node.next_node = new_next_node
+    end
+  end
 end
