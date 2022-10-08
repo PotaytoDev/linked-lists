@@ -59,4 +59,32 @@ class LinkedList
 
     current_node
   end
+
+  # Removes the last element from the list
+  def pop
+    current_node = @head
+
+    until current_node.next_node == @tail
+      current_node = current_node.next_node
+    end
+
+    @tail = current_node
+    @tail.next_node = nil
+    @size -= 1
+  end
+
+  # Returns true if the passed in value is in the list and otherwise returns false
+  def contains?(value)
+    return true if @head.value == value
+
+    current_node = @head.next_node
+
+    until current_node.nil?
+      return true if current_node.value == value
+
+      current_node = current_node.next_node
+    end
+
+    false
+  end
 end
