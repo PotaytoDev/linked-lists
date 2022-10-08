@@ -45,4 +45,18 @@ class LinkedList
 
     @size += 1
   end
+
+  # Returns the node at the given index
+  def at(index)
+    return @head if index.zero?
+
+    current = @head
+
+    while index > 0
+      current = current.next_node
+      index -= 1
+    end
+
+    current
+  end
 end
