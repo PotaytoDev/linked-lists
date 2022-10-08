@@ -48,15 +48,15 @@ class LinkedList
 
   # Returns the node at the given index
   def at(index)
-    return @head if index.zero?
+    return nil if index.negative? || index >= @size
 
-    current = @head
+    current_node = @head
 
     while index > 0
-      current = current.next_node
+      current_node = current_node.next_node
       index -= 1
     end
 
-    current
+    current_node
   end
 end
